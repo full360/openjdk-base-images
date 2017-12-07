@@ -13,7 +13,7 @@ DOCKERMK := $(shell if command -v curl >/dev/null; then \
 			fi \
 			elif command -v wget >/dev/null; then \
 			if [ ! -e docker-ci.mk ]; then \
-				wget -q https://raw.githubusercontent.com/full360/docker-ci/master/docker-ci.mk -O docker-ci.mk; \
+				wget -q https://raw.githubusercontent.com/full360/docker-ci/master/docker-ci.mk; \
 			fi \
 			else \
 				echo "cURL and wget not found..."; \

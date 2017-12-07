@@ -5,7 +5,7 @@ build:docker:
   stage: build
   image: docker:17.06.2-ce
   script:
-    - apk add --no-cache make git bash groff less python py-pip
+    - apk add --no-cache make git wget bash groff less python py-pip
     - pip install awscli
     - make
   only:
