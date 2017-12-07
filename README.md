@@ -1,4 +1,4 @@
-# OpenJDK base Docker images
+# OpenJDK family of Docker base images
 
 Every image that's based on OpenJDK, for Scala (Sbt) or Any other non-public
 image related to OpenJDK should be here.
@@ -7,3 +7,6 @@ image related to OpenJDK should be here.
 
 The easiest way to build containers will be, using the `Makefile`. There are
 various ways to build containers with the `Makefile`.
+
+This project uses `docker-ci.mk` so you can use `make mkhelp` to display all of
+the commands available.
