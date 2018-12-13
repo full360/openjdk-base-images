@@ -1,7 +1,7 @@
 FROM 115159323386.dkr.ecr.ap-southeast-2.amazonaws.com/base/openjdk:12-jdk-alpine
 
-LABEL build.publish.majorversion="2-1"
-LABEL build.publish.minorversion="2.12-1.2"
+LABEL build.publish.majorversion="12-2-1"
+LABEL build.publish.minorversion="12-2.12-1.2"
 LABEL build.publish.imagebase="jdk-alpine"
 
 # Set the sbt and scala versions
