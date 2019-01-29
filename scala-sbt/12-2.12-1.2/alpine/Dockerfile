@@ -5,7 +5,7 @@ LABEL build.publish.minorversion="12-2.12-1.2"
 LABEL build.publish.imagebase="jdk-alpine"
 
 # Set the sbt and scala versions
-ENV SCALA_VERSION 2.12.2
+ENV SCALA_VERSION 2.12.8
 ENV SBT_VERSION 1.2.7
 
 RUN mkdir -p /opt
