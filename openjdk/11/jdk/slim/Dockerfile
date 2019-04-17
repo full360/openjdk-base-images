@@ -1,13 +1,13 @@
-FROM openjdk:11-jdk-alpine
+FROM openjdk:11-jdk-slim
 
 LABEL build.publish.majorversion="11"
 LABEL build.publish.minorversion="11-jdk"
-LABEL build.publish.imagebase="alpine"
+LABEL build.publish.imagebase="slim"
 
 # envelope version
 ENV ENVELOPE_VERSION 0.3.1
 
-RUN apk add --no-cache \
+RUN apt-get update && apt-get install -y \
       bash \
       curl \
       unzip \
