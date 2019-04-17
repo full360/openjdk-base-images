@@ -1,8 +1,8 @@
-FROM 115159323386.dkr.ecr.ap-southeast-2.amazonaws.com/base/openjdk:11-jdk-alpine
+FROM 115159323386.dkr.ecr.ap-southeast-2.amazonaws.com/base/openjdk:11-jdk-slim
 
 LABEL build.publish.majorversion="11-2-1"
 LABEL build.publish.minorversion="11-2.12-1.2"
-LABEL build.publish.imagebase="jdk-alpine"
+LABEL build.publish.imagebase="jdk-slim"
 
 # Set the sbt and scala versions
 ENV SCALA_VERSION 2.12.8
