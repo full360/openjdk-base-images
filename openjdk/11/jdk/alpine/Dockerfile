@@ -2,7 +2,7 @@ FROM adoptopenjdk/openjdk11:jdk-11.0.2.9-alpine
 
 LABEL build.publish.majorversion="11"
 LABEL build.publish.minorversion="11-jdk"
-LABEL build.publish.imagebase="slim"
+LABEL build.publish.imagebase="alpine"
 
 # envelope version
 ENV ENVELOPE_VERSION 0.3.1
