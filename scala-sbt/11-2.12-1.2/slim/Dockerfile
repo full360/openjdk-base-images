@@ -1,4 +1,4 @@
-FROM 115159323386.dkr.ecr.ap-southeast-2.amazonaws.com/base/openjdk:11-jdk-slim
+FROM full360/openjdk:11-jdk-slim
 
 LABEL build.publish.majorversion="11-2-1"
 LABEL build.publish.minorversion="11-2.12-1.2"

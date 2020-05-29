@@ -1,4 +1,4 @@
-FROM 115159323386.dkr.ecr.ap-southeast-2.amazonaws.com/base/openjdk:8-jdk-alpine
+FROM full360/openjdk:8-jdk-alpine
 
 LABEL build.publish.majorversion="8-2-1"
 LABEL build.publish.minorversion="8-2.12-1.2"

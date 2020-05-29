@@ -3,14 +3,13 @@ stages:
 
 build:docker:
   stage: build
-  image: docker:17.06.2-ce
+  image: docker:18.06.3-ce
   script:
     - apk add --no-cache make git wget bash groff less python py-pip
     - pip install awscli
-    - export AWS_DEFAULT_REGION=ap-southeast-2
-    - make
+    - make build
   only:
     - trigger
     - master
   tags:
-    - qantas-loyalty
+    - full360
