@@ -1,3 +1,9 @@
 #!/bin/bash
 make clean
 make build-${DOCKER_REPO##*/}
+
+# Jun 4, 2020 Tag so latest exists
+# docker tries to push a latest tag, but the make might not have
+# used a latest tag for the build. This ensures that all tags exist when
+# dockerhub finishes the build
+make tag-${DOCKER_REPO##*/}
