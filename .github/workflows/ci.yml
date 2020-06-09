@@ -1,0 +1,133 @@
+name: GitHub CI
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - LICENSE
+      - README.md
+  schedule:
+    - cron: 0 0 * * 0
+
+jobs:
+  # Java
+  openjdk-8:
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build alpine
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+          path: openjdk/8/jdk/alpine
+          always_pull: true
+          repository: full360/openjdk
+          tags: 8-alpine,8-jdk-alpine
+  openjdk-11:
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build alpine
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+          path: openjdk/11/jdk/alpine
+          always_pull: true
+          repository: full360/openjdk
+          tags: 11-alpine,11-jdk-alpine
+      - name: Build slim
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+          path: openjdk/11/jdk/slim
+          always_pull: true
+          repository: full360/openjdk
+          tags: 11-slim,11-jdk-slim
+  openjdk-12:
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build alpine
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+          path: openjdk/12/jdk/alpine
+          always_pull: true
+          repository: full360/openjdk
+          tags: 12-alpine,12-jdk-alpine
+  # Scala
+  scala-2-0:
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
+    needs: openjdk-8
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build alpine
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+          path: scala-sbt/2.11-0.13/alpine
+          always_pull: true
+          repository: full360/scala-sbt
+          tags: 2-0-jdk-alpine,2.11-0.13-jdk-alpine
+  scala-8-2-1:
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
+    needs: openjdk-8
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build alpine
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+          path: scala-sbt/8-2.12-1.2/alpine
+          always_pull: true
+          repository: full360/scala-sbt
+          tags: 8-2-1-jdk-alpine,8-2.12-1.2-jdk-alpine
+  scala-11-2-1:
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
+    needs: openjdk-11
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build slim
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+          path: scala-sbt/11-2.12-1.2/slim
+          always_pull: true
+          repository: full360/scala-sbt
+          tags: 11-2-1-jdk-slim,11-2.12-1.2-jdk-slim
+  scala-12-2-1:
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
+    needs: openjdk-12
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build alpine
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+          path: scala-sbt/12-2.12-1.2/alpine
+          always_pull: true
+          repository: full360/scala-sbt
+          tags: 12-2-1-jdk-alpine,12-2.12-1.2-jdk-alpine
