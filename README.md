@@ -5,8 +5,7 @@ image related to OpenJDK should be here.
 
 ## Building
 
-The easiest way to build containers will be, using the `Makefile`. There are
-various ways to build containers with the `Makefile`.
+We use GitHub Actions to build Docker images for this repo. Please refer to the
+`.github/workflow` directory for more information.
 
-This project uses `docker-ci.mk` so you can use `make mkhelp` to display all of
-the commands available.
+This repo will be build automatically once a week.
