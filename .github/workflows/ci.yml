@@ -12,6 +12,7 @@ on:
 
 jobs:
   openjdk-8:
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -25,3 +26,42 @@ jobs:
           always_pull: true
           repository: full360/openjdk
           tags: 8-alpine,8-jdk-alpine
+  openjdk-11:
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build alpine
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+          path: openjdk/11/jdk/alpine
+          always_pull: true
+          repository: full360/openjdk
+          tags: 11-alpine,11-jdk-alpine
+      - name: Build slim
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+          path: openjdk/11/jdk/slim
+          always_pull: true
+          repository: full360/openjdk
+          tags: 11-slim,11-jdk-slim
+  openjdk-12:
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build alpine
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+          path: openjdk/12/jdk/alpine
+          always_pull: true
+          repository: full360/openjdk
+          tags: 12-alpine,12-jdk-alpine
