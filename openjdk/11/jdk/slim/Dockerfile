@@ -5,7 +5,7 @@ LABEL build.publish.minorversion="11-jdk"
 LABEL build.publish.imagebase="slim"
 
 # envelope version
-ENV ENVELOPE_VERSION 0.3.2
+ENV ENVELOPE_VERSION 0.3.3
 
 RUN apt-get update && apt-get install -y \
       bash \

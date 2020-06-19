@@ -5,7 +5,7 @@ LABEL build.publish.minorversion="11-jdk"
 LABEL build.publish.imagebase="alpine"
 
 # envelope version
-ENV ENVELOPE_VERSION 0.3.2
+ENV ENVELOPE_VERSION 0.3.3
 
 RUN apk add --no-cache \
       bash \
