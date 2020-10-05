@@ -10,7 +10,7 @@ ENV SBT_VERSION 1.2.7
 
 RUN mkdir -p /opt
 WORKDIR /opt
-ADD https://piccolo.link/sbt-${SBT_VERSION}.tgz .
+ADD https://github.com/sbt/sbt/releases/download/v${SBT_VERSION}/sbt-${SBT_VERSION}.tgz .
 RUN tar xvfz sbt-${SBT_VERSION}.tgz \
   && rm -f sbt-${SBT_VERSION}.tgz \
   && ln -s /opt/sbt/bin/sbt /usr/bin/ \
